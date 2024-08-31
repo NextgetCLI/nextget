@@ -54,6 +54,7 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+    
   },
   "husky": {
     "hooks": {
