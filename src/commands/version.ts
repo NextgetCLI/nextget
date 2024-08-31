@@ -1,5 +1,5 @@
+import { commandTitle } from '@/utils/strings'
 import { GluegunToolbox } from 'gluegun'
-import { commandTitle } from '../utils/strings'
 
 module.exports = {
   name: 'version',
