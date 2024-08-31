@@ -1,4 +1,5 @@
 import { GluegunToolbox } from 'gluegun'
+import { commandTitle } from '../utils/strings'
 
 module.exports = {
   name: 'help',
@@ -7,6 +8,7 @@ module.exports = {
   run: async (toolbox: GluegunToolbox) => {
     const { print } = toolbox
 
+    commandTitle('Ajuda ❓', print)
     print.printCommands(toolbox)
   },
 }

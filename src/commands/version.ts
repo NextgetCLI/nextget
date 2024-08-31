@@ -1,4 +1,5 @@
 import { GluegunToolbox } from 'gluegun'
+import { commandTitle } from '../utils/strings'
 
 module.exports = {
   name: 'version',
@@ -7,7 +8,7 @@ module.exports = {
   run: async (box: GluegunToolbox) => {
     const { print, meta } = box
 
-    print.highlight('🚀 Nextget CLI')
-    print.info(`Versão: ${meta.version()}`)
+    commandTitle('Versão ℹ️', print)
+    print.info(meta.version())
   },
 }
