@@ -2,24 +2,26 @@
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
-  parser: '@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser',
 
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-  },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
+    parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+    },
+    extends: [
+        'plugin:@typescript-eslint/recommended',
 
-    'prettier',
-    'plugin:prettier/recommended',
-  ],
-  rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
+        'prettier',
+        'plugin:prettier/recommended',
     ],
-  },
-}
+    rules: {
+        'prettier/prettier': [
+            'error',
+            {
+                endOfLine: 'auto',
+                tabWidth: 4,
+                semi: true,
+            },
+        ],
+    },
+};
