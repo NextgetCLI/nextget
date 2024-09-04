@@ -8,7 +8,7 @@ interface ValidateResponse {
 module.exports = (toolbox: GluegunToolbox) => {
     const { filesystem, http } = toolbox;
 
-    const AUHT_CONFIG = `${filesystem.homedir()}/.nextget/auth.config.json`;
+    const AUTH_CONFIG = `${filesystem.homedir()}/.nextget/auth.config.json`;
 
     let userApiKey: string | false = false;
 
@@ -22,13 +22,13 @@ module.exports = (toolbox: GluegunToolbox) => {
 
     async function readApiKey(): Promise<string | false> {
         return (
-            filesystem.exists(AUHT_CONFIG) && filesystem.readAsync(AUHT_CONFIG)
+            filesystem.exists(AUTH_CONFIG) && filesystem.readAsync(AUTH_CONFIG)
         );
     }
 
     async function saveApiKey(apikey: string) {
         return filesystem.writeAsync(
-            AUHT_CONFIG,
+            AUTH_CONFIG,
             JSON.stringify({ apikey }, null, 4)
         );
     }
@@ -50,5 +50,9 @@ module.exports = (toolbox: GluegunToolbox) => {
         }
     }
 
-    toolbox.auth = { authorize, saveApiKey, getApiKey, readApiKey };
+    async function logout() {
+        await filesystem.removeAsync(AUTH_CONFIG);
+    }
+
+    toolbox.auth = { authorize, saveApiKey, getApiKey, readApiKey, logout };
 };
